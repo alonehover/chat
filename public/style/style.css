@@ -26,3 +26,25 @@ a{
     margin-bottom: 1em;
     margin-right: 10px;
 }
+
+
+#room-list{
+    float:right;
+    width: 100px;
+    height: 300px;
+    overflow: auto;
+}
+
+#room-list div{
+    border-bottom: 1px solid #eee;
+}
+
+#send-message{
+    width: 700px;
+    margin-bottom: 1em;
+    margin-right: 1em;
+}
+
+#help{
+    font: 14px/22px 'Helvetica',微软雅黑,Arial,sans-serif;
+}

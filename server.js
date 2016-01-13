@@ -51,8 +51,8 @@ var server = http.createServer(function(req,res){
     serverStatic(res,cache,absPath);
 });
 
-server.listen(8888,function(){
-    console.log("服务运行中......，端口监听 ：8888");
+server.listen(8000,function(){
+    console.log("服务运行中......，端口监听 ：8000");
 });
 
 var chatServer = require('./lib/chat_server');
