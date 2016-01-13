@@ -34,9 +34,9 @@ Chat.prototype.processCommand = function (command) {
             this.socket.emit('nameAttempt',name);
             break;
         default:
-            message = '命令无法识别';
+            message = command + ' 命令无法识别';
             break;
     }
-    
+
     return message;
 };

@@ -1,4 +1,5 @@
 function divEscapedContentElement(message){
+    // console.log(message);
     return $("<div></div>").text(message);
 }
 
@@ -18,6 +19,7 @@ function processUserInput(chatApp, socket){
         }
     }else {
         chatApp.sendMessage($("#room").text(),message);
+
         $('#messages').append(divEscapedContentElement(message));
         $('#messages').scrollTop($('#message').prop('scrollHeight'));
     }
@@ -51,7 +53,9 @@ $(document).ready(function(){
     // 显示接收信息
     socket.on('message',function(message){
         var newElement = $("<div></div>").text(message.text);
-        $("messages").append(newElement);
+        console.log(newElement[0].innerText);
+        $("#messages").append(divEscapedContentElement(newElement[0].innerText));
+        $("#send-message").val('');
     });
 
     // 显示房间列表
@@ -59,7 +63,7 @@ $(document).ready(function(){
         $("#room-list").empty();
 
         for(var room in rooms){
-            rom = room.substring(1,room.length);
+            // room = room.substring(1,room.length);
             if (room != '') {
                 $("#room-list").append(divEscapedContentElement(room));
             }
@@ -72,9 +76,11 @@ $(document).ready(function(){
         });
     });
 
-    var refresh = setInterval(function(){
+    socket.emit('rooms');
+
+    setInterval(function(){
         socket.emit('rooms');
-    },1000);
+    },2000);
 
     $("#send-message").focus();
 
